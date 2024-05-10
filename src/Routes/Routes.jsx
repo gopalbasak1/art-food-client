@@ -4,6 +4,8 @@ import Root from '../Layouts/Root';
 import Login from '../Pages/Login/Login';
 import Home from '../Pages/Home/Home';
 import Register from '../Pages/Register/Register';
+import ProductDetails from '../Pages/Product/ProductDetails';
+import Purchase from '../Pages/Product/Purchase';
 
 const Routes = createBrowserRouter([
     {
@@ -13,7 +15,6 @@ const Routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home/>,
-                loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/products`)
             },
             {
                 path: '/login',
@@ -22,6 +23,16 @@ const Routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register/>
+            },
+            {
+                path: '/product/:id',
+                element: <ProductDetails/>,
+                loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/product/${params.id}`),
+            },
+            {
+                path: '/purchase/:id',
+                element: <Purchase/>,
+                loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/product/${params.id}`),
             }
         ])
     }

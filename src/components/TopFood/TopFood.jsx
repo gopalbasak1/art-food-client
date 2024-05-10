@@ -1,6 +1,20 @@
+import { useEffect, useState } from "react";
 import TopFoodCard from "./TopFoodCard";
+import axios from "axios";
 
-const TopFood = ({ products }) => {
+const TopFood = () => {
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(()=>{
+        const getData = async () => {
+             const { data } = await axios(`${import.meta.env.VITE_API_URL}/products`);
+                setProducts(data);
+        }
+        getData();
+    },[]);
+
+
     return (
         <div className="container px-6 py-10 mx-auto">
             <div className="text-center">
