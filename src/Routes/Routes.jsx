@@ -7,6 +7,7 @@ import Register from '../Pages/Register/Register';
 import ProductDetails from '../Pages/Product/ProductDetails';
 import Purchase from '../Pages/Product/Purchase';
 import AddProduct from '../Pages/Product/AddProduct';
+import MyProduct from '../Pages/Product/MyProducts';
 
 const Routes = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const Routes = createBrowserRouter([
             {
                 path: '/add-product',
                 element: <AddProduct/>
+            },
+            {
+                path: '/my-add-products',
+                element: <MyProduct/>
             }
         ])
     }
