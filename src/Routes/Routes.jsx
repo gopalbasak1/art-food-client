@@ -6,6 +6,7 @@ import Home from '../Pages/Home/Home';
 import Register from '../Pages/Register/Register';
 import ProductDetails from '../Pages/Product/ProductDetails';
 import Purchase from '../Pages/Product/Purchase';
+import AddProduct from '../Pages/Product/AddProduct';
 
 const Routes = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const Routes = createBrowserRouter([
                 path: '/purchase/:id',
                 element: <Purchase/>,
                 loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/product/${params.id}`),
+            },
+            {
+                path: '/add-product',
+                element: <AddProduct/>
             }
         ])
     }

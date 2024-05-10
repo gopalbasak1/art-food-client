@@ -90,15 +90,15 @@ const Navbar = () => {
               className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 '
             >
               <li>
-                <Link to='/add-job' className='justify-between'>
-                  Add Job
+                <Link to='/add-product' className='justify-between'>
+                  Add Product
                 </Link>
               </li>
               <li>
-                <Link to='/my-posted-jobs'>My Posted Jobs</Link>
+                <Link to='/my-add-food'>My Add Food</Link>
               </li>
               <li>
-                <Link to='/my-bids'>My Bids</Link>
+                <Link to='/my-order'>My Order</Link>
               </li>
               <li>
                 <Link to='/bid-requests'>Bid Requests</Link>

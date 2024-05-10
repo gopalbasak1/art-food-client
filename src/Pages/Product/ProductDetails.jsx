@@ -57,7 +57,7 @@ const ProductDetails = () => {
         </div>
 
         <div className="flex items-center justify-center w-full h-full lg:w-1/2">
-            <img className='object-cover w-full h-full max-w-2xl rounded-md' src={logo} alt="" />
+            <img className='object-cover w-full h-full max-w-2xl rounded-md' src={foodImage} alt={foodName} />
         </div>
     </div>
 
