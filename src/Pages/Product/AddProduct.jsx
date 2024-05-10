@@ -15,6 +15,7 @@ const AddProduct = () => {
     const foodImage = form.foodImage.value
     const quantity = parseFloat(form.quantity.value)
     const foodCategory = form.foodCategory.value
+    const foodOriginCountry = form.foodOriginCountry.value
     const price = parseFloat(form.price.value)
     const ingredients = form.ingredients.value.split('\n'); // Extract ingredients from textarea
   const makingProcedure = form.makingProcedure.value;
@@ -23,6 +24,7 @@ const AddProduct = () => {
       foodName,
       foodImage,
       foodCategory,
+      foodOriginCountry,
       price,
       quantity,
       description : {
@@ -40,7 +42,7 @@ const AddProduct = () => {
       const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/product`, productData);
       console.log(data);
       toast.success('Product Added Successfully!');
-      navigate('/'); // Redirect to home page after successful addition
+      navigate('/my-add-products'); // Redirect to home page after successful addition
     } catch (err) {
       console.log(err);
       toast.error('Failed to Add Product');

@@ -13,7 +13,7 @@ const TopFoodCard = ({ product }) => {
   return (
     <div className="flex max-w-md overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
     <div className="w-1/3 bg-cover" style={{
-        backgroundImage: `url(${logo})`,
+        backgroundImage: `url(${foodImage})`,
       }}></div>
 
     <div className="w-2/3 p-4 md:p-4">
