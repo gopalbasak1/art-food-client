@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useTypewriter, Cursor } from 'react-simple-typewriter'
 
 
-const Slider = ({ image, text }) => {
+const Slider = ({ image}) => {
 
     const [typeEffect] = useTypewriter({
         words: ['Flavors', 'Delights'],
