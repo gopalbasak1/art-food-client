@@ -40,7 +40,7 @@ const MyProducts = () => {
         <h2 className='text-lg font-medium text-gray-800 '>My Posted Jobs</h2>
 
         <span className='px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full '>
-          {products.length} Job
+          {products.length} Product
         </span>
       </div>
 
@@ -64,7 +64,7 @@ const MyProducts = () => {
                       className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
                     >
                       <div className='flex items-center gap-x-3'>
-                        <span>Title</span>
+                        <span>Food Name</span>
                       </div>
                     </th>
 

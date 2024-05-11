@@ -3,6 +3,8 @@ import logo from '../../assets/logo.jpeg'
 import { FaRegHandPointRight } from 'react-icons/fa';
 import { SiHomebridge } from 'react-icons/si';
 import { IoPersonOutline } from 'react-icons/io5';
+import { BiCategory } from 'react-icons/bi';
+import { MdNoFood } from 'react-icons/md';
 
 
 const ProductDetails = () => {
@@ -13,13 +15,18 @@ const ProductDetails = () => {
 
     const {ingredients, makingProcedure} = description || {}; 
 
+
+    
+
     return (
 
     <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:py-16 h-full lg:flex-row lg:items-center">
         <div className="w-full lg:w-1/2">
             <div className="lg:max-w-lg">
-                <h1 className="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl">{foodName}</h1>
+                <h1 className="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl flex items-center gap-2"><MdNoFood />{foodName}</h1>
                 <p className="mt-4 text-gray-600 dark:text-gray-300">Price: ${price}</p>
+                <p className="mt-4 text-gray-600 dark:text-gray-300 flex items-center gap-2"><BiCategory />Category: {foodCategory}</p>
+                <p className="mt-4 text-gray-600 dark:text-gray-300 flex items-center gap-2"><img className='size-6' src="https://i.ibb.co/q7qhcg1/2366911-200.png" alt="" />Quantity: {quantity}</p>
                 <p className="mt-4 text-gray-600 dark:text-gray-300 flex items-center gap-2"><SiHomebridge/> Food Origin Country: {foodOriginCountry}</p>
                 <p className="mt-4 text-gray-600 dark:text-gray-300 flex items-center gap-2"><IoPersonOutline /> Made By: {buyer.name}</p>
 
@@ -57,7 +64,7 @@ const ProductDetails = () => {
         </div>
 
         <div className="flex items-center justify-center w-full h-full lg:w-1/2">
-            <img className='object-cover w-full h-full max-w-2xl rounded-md' src={foodImage} alt={foodName} />
+            <img className='object-cover w-full md:h-[700px] max-w-2xl rounded-md' src={foodImage} alt={foodName} />
         </div>
     </div>
 

@@ -100,9 +100,6 @@ const Navbar = () => {
               <li>
                 <Link to='/my-order'>My Order</Link>
               </li>
-              <li>
-                <Link to='/bid-requests'>Bid Requests</Link>
-              </li>
               <li className='mt-2'>
                 <button
                   onClick={logOut}
