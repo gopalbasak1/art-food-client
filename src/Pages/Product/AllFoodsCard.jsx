@@ -17,7 +17,7 @@ const AllFoodsCard = ({ product }) => {
         backgroundImage: `url(${foodImage})`,
       }}></div>
 
-    <div className="w-2/3 p-4 md:p-4">
+    <div className="w-2/3 p-4 md:p-4 h-[180px]">
         <h1 className="text-xl font-bold text-gray-800 dark:text-white">{foodName}</h1>
 
      

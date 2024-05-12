@@ -11,6 +11,7 @@ import MyProduct from '../Pages/Product/MyProducts';
 import UpdateProduct from '../Pages/Product/UpdateProduct';
 import MyOrder from '../Pages/MyOrder/MyOrder';
 import AllFoods from '../Pages/Product/AllFoods';
+import Gallery from '../Pages/Gallery/Gallery';
 
 const Routes = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ const Routes = createBrowserRouter([
             {
                 path: '/all-foods',
                 element: <AllFoods/>
+            },
+            {
+                path: '/gallery',
+                element: <Gallery/>
             }
         ])
     }

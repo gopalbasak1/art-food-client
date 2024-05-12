@@ -26,7 +26,7 @@ const Slider = ({ image}) => {
           <p className="text-lg text-slate-200 w-[600px] pb-5  mx-auto">Explore a world of culinary delights at our international restaurant. Indulge in the finest dishes from around the globe</p>
           <br />
           <Link
-            to='/add-job'
+            to='/all-foods'
             className='w-full px-5 py-4 mt-4 text-sm font-medium text-white capitalize transition-colors duration-300 transform rounded-md lg:w-auto className="btn border-2 btn-outline hover:bg-gradient-to-r from-green-400 to-blue-500'
           >
             Explore All Foods
