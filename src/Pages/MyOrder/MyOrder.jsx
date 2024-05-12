@@ -56,6 +56,16 @@ const MyOrder = () => {
                 <table className='min-w-full divide-y divide-gray-200'>
                   <thead className='bg-gray-50'>
                     <tr>
+
+                    <th
+                        scope='col'
+                        className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
+                      >
+                        <div className='flex items-center gap-x-3'>
+                          <span>No</span>
+                        </div>
+                      </th>
+
                       <th
                         scope='col'
                         className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
@@ -79,13 +89,20 @@ const MyOrder = () => {
                       >
                         <span>Purchase Date</span>
                       </th>
+
+                      <th
+                        scope='col'
+                        className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                      >
+                        <span>Quantity</span>
+                      </th>
   
                       <th
                         scope='col'
                         className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                       >
                         <button className='flex items-center gap-x-2'>
-                          <span>Price</span>
+                          <span>Total Price</span>
                         </button>
                       </th>
   
@@ -104,9 +121,13 @@ const MyOrder = () => {
                   <tbody className='bg-white divide-y divide-gray-200 '>
 
                     {
-                      orders.map(order=> (
+                      orders.map((order,index)=> (
                         <tr className="" key={order._id}>
 
+                      <td className='p-2'>
+                       <ol>{index + 1}.</ol>
+
+                      </td>
                       <td className='p-2'>
                        <img className="size-20 border-4 rounded-lg border-red-400" src={order.foodImage} alt="" />
                       </td>
@@ -116,18 +137,23 @@ const MyOrder = () => {
                       </td>
   
                       <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                        {new Date (order.buyingDate).toLocaleDateString()}
-                      </td>
-  
-                      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                      ${order.price}
+                      {new Date (order.buyingDate).toLocaleDateString()}
                       </td>
 
-                      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
+                      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap pl-8'>
+                        
+                        {order.purchaseQuantity}
+                      </td>
+  
+                      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap pl-7'>
+                      ${order.price * order.purchaseQuantity}
+                      </td>
+
+                      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap '>
                       {order.buyer.name}
                       </td>
 
-                      <td className='px-4 py-4 text-sm whitespace-nowrap'>
+                      <td className='px-4 py-4 text-sm whitespace-nowrap pl-5'>
                         <button
                         onClick={()=>handleDelete(order._id)}
 

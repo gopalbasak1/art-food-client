@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -8,6 +8,7 @@ const Purchase = () => {
   const purchase = useLoaderData();
   const { user } = useContext(AuthContext);
   const { _id, foodImage, foodName, price, quantity, buyer } = purchase || {};
+  const navigate = useNavigate();
 
   // Use useState to store the current buying date
   const [buyingDate, setBuyingDate] = useState(Date.now());
@@ -15,12 +16,12 @@ const Purchase = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (user?.email === buyer?.email) return toast.error("Action not permitted!");
+    if (user?.email === buyer?.email) return toast.error("Food owner is not allowed to buy!");
 
     const form = e.target;
     console.log(form.price.value);
     const priceValue = parseFloat(form.price.value);
-    const quantityValue = parseInt(form.quantity.value);
+    const purchaseQuantity = parseInt(form.purchaseQuantity.value);
     const email = user?.email;
     
 
@@ -28,7 +29,7 @@ const Purchase = () => {
       productId: _id,
       price: priceValue,
       foodName,
-      quantity: quantityValue,
+      purchaseQuantity,
       email,
       buyer,
       buyingDate,
@@ -43,7 +44,7 @@ const Purchase = () => {
       console.log(data);
       toast.success("Purchase Successful!");
       // Optionally, you can redirect the user after successful purchase
-      // navigate('/my-purchases');
+      navigate('/my-order');
     } catch (error) {
       console.error("Error:", error);
       toast.error("Failed to complete purchase. Please try again later.");
@@ -137,7 +138,7 @@ const Purchase = () => {
                 </label>
                 <input
                   id="quantity"
-                  name="quantity"
+                  name="purchaseQuantity"
                   type="number"
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
