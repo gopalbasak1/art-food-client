@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
- // Import useHistory from react-router-dom for navigation
 import TopFoodCard from "./TopFoodCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 const TopFood = () => {
     const [products, setProducts] = useState([]);
-  // Create a history object using useHistory
 
     useEffect(() => {
         const getData = async () => {
@@ -20,10 +18,6 @@ const TopFood = () => {
         getData();
     }, []);
 
-    // Function to handle navigation to All Foods page
-    // const handleSeeAll = () => {
-    //     history.push("/all-foods"); // Navigate to the All Foods page
-    // };
 
     return (
         <div className="container px-6 py-10 mx-auto">
