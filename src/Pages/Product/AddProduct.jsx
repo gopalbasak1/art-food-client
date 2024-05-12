@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { AuthContext } from '../../Provider/AuthProvider';
+import Spinner from '../../components/Spinner/Spinner';
 
 const AddProduct = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -48,6 +49,10 @@ const AddProduct = () => {
       toast.error('Failed to Add Product');
     }
   };
+
+  if(loading){
+    return <Spinner/>
+  }
 
   return (
     <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>

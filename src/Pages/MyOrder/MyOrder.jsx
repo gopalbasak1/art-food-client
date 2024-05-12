@@ -2,13 +2,14 @@ import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../Provider/AuthProvider"
 import axios from "axios";
 import toast from "react-hot-toast";
+import Spinner from "../../components/Spinner/Spinner";
 
 
 
 
 const MyOrder = () => {
 
-  const {user} = useContext(AuthContext);
+  const {user, loading} = useContext(AuthContext);
 
   const [orders, setOrders] = useState([]);
 
@@ -38,6 +39,10 @@ const MyOrder = () => {
       console.log(err.message)
       toast.error(err.message)
     }
+  }
+
+  if(loading){
+    return <Spinner/>
   }
 
 

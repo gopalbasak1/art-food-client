@@ -3,10 +3,11 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
+import Spinner from "../../components/Spinner/Spinner";
 
 const Purchase = () => {
   const purchase = useLoaderData();
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const { _id, foodImage, foodName, price, quantity, buyer } = purchase || {};
   const navigate = useNavigate();
 
@@ -66,10 +67,14 @@ const Purchase = () => {
       toast.error("Failed to complete purchase. Please try again later.");
     }
   };
+
+  if(loading){
+    return <Spinner/>
+  }
   
 
   return (
-    <div>
+    <div className="container mx-auto my-10">
       <div className="flex flex-col md:flex-row justify-around gap-5 items-center min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto">
         <section className="p-6 w-full bg-white rounded-md shadow-md flex-1 md:min-h-[350px]">
           <h2 className="text-lg font-semibold text-gray-700 capitalize">
@@ -104,6 +109,20 @@ const Purchase = () => {
                     placeholder="Price"
                     name="price"
                     defaultValue={price || ""}
+                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+                    readOnly
+                  />
+                </div>
+                <div>
+                  <label className="text-gray-700" htmlFor="foodQuantity">
+                    Available Quantity
+                  </label>
+                  <input
+                    id="foodQuantity"
+                    type="number"
+                    placeholder="foodQuantity"
+                    name="foodQuantity"
+                    defaultValue={quantity}
                     className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
                     readOnly
                   />

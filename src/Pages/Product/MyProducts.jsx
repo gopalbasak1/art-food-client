@@ -3,9 +3,10 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { AuthContext } from '../../Provider/AuthProvider'
+import Spinner from '../../components/Spinner/Spinner'
 
 const MyProducts = () => {
-  const { user } = useContext(AuthContext)
+  const { user, loading } = useContext(AuthContext)
   const [products, setProducts] = useState([])
 
   useEffect(() => {
@@ -33,7 +34,12 @@ const MyProducts = () => {
       console.log(err.message)
       toast.error(err.message)
     }
+  };
+
+  if(loading){
+    return <Spinner/>
   }
+
   return (
     <section className='container px-4 mx-auto pt-12'>
       <div className='flex items-center gap-x-3'>

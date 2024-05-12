@@ -12,11 +12,14 @@ import UpdateProduct from '../Pages/Product/UpdateProduct';
 import MyOrder from '../Pages/MyOrder/MyOrder';
 import AllFoods from '../Pages/Product/AllFoods';
 import Gallery from '../Pages/Gallery/Gallery';
+import PrivateRoute from './PrivateRoute';
+import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 
 const Routes = createBrowserRouter([
     {
         path: '/',
         element: <Root/>,
+        errorElement: <ErrorPage/>,
         children: ([
             {
                 path: '/',
@@ -32,12 +35,16 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/product/:id',
-                element: <ProductDetails/>,
+                element: <PrivateRoute>
+                    <ProductDetails/>
+                </PrivateRoute>,
                 loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/product/${params.id}`),
             },
             {
                 path: '/purchase/:id',
-                element: <Purchase/>,
+                element: <PrivateRoute>
+                    <Purchase/>
+                </PrivateRoute>,
                 loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/product/${params.id}`),
             },
             {
@@ -46,7 +53,9 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/my-add-products',
-                element: <MyProduct/>
+                element: <PrivateRoute>
+                    <MyProduct/>
+                </PrivateRoute>
             },
             {
                 path: '/update/:id',
@@ -55,7 +64,9 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/my-order',
-                element: <MyOrder/>
+                element: <PrivateRoute>
+                    <MyOrder/>
+                </PrivateRoute>
             },
             {
                 path: '/all-foods',

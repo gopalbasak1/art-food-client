@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import TopFoodCard from "./TopFoodCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Spinner from "../Spinner/Spinner";
+
 
 const TopFood = () => {
     const [products, setProducts] = useState([]);
+    
+    const { loading } = useContext(AuthContext);
 
     useEffect(() => {
         const getData = async () => {
@@ -17,6 +22,10 @@ const TopFood = () => {
         };
         getData();
     }, []);
+
+    if(loading){
+        return <Spinner/>
+    }
 
 
     return (

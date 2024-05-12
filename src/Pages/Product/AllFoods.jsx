@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AllFoodsCard from "./AllFoodsCard";
+import Banner from "../../components/Banner/Banner";
+import ProductBanner from "./ProductBanner";
 
 const AllFoods = () => {
     const [products, setProducts] = useState([]);
@@ -31,8 +33,9 @@ const AllFoods = () => {
     return (
         <div className="container px-6 py-10 mx-auto">
             <div className="text-center mb-6">
-                <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white mb-10">All Food Foods</h1>
-                <div className="flex items-center w-2/5 mx-auto relative">
+                <ProductBanner/>
+                
+                <div className="flex items-center w-2/5 mx-auto relative my-10">
                 <input
                     type="text"
                     placeholder="Search by food name..."
