@@ -10,6 +10,7 @@ import AddProduct from '../Pages/Product/AddProduct';
 import MyProduct from '../Pages/Product/MyProducts';
 import UpdateProduct from '../Pages/Product/UpdateProduct';
 import MyOrder from '../Pages/MyOrder/MyOrder';
+import AllFoods from '../Pages/Product/AllFoods';
 
 const Routes = createBrowserRouter([
     {
@@ -54,6 +55,10 @@ const Routes = createBrowserRouter([
             {
                 path: '/my-order',
                 element: <MyOrder/>
+            },
+            {
+                path: '/all-foods',
+                element: <AllFoods/>
             }
         ])
     }

@@ -94,6 +94,13 @@ const MyOrder = () => {
                         scope='col'
                         className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                       >
+                        Made By
+                      </th>
+
+                      <th
+                        scope='col'
+                        className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                      >
                         <span>Quantity</span>
                       </th>
   
@@ -106,12 +113,7 @@ const MyOrder = () => {
                         </button>
                       </th>
   
-                      <th
-                        scope='col'
-                        className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
-                      >
-                        Made By
-                      </th>
+                      
   
                       <th className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
                         Actions
@@ -124,7 +126,7 @@ const MyOrder = () => {
                       orders.map((order,index)=> (
                         <tr className="" key={order._id}>
 
-                      <td className='p-2'>
+                      <td className='pl-5'>
                        <ol>{index + 1}.</ol>
 
                       </td>
@@ -140,6 +142,10 @@ const MyOrder = () => {
                       {new Date (order.buyingDate).toLocaleDateString()}
                       </td>
 
+                      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap '>
+                      {order.buyer.name}
+                      </td>
+
                       <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap pl-8'>
                         
                         {order.purchaseQuantity}
@@ -149,9 +155,7 @@ const MyOrder = () => {
                       ${order.price * order.purchaseQuantity}
                       </td>
 
-                      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap '>
-                      {order.buyer.name}
-                      </td>
+                      
 
                       <td className='px-4 py-4 text-sm whitespace-nowrap pl-5'>
                         <button
