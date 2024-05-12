@@ -16,18 +16,30 @@ const Purchase = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (user?.email === buyer?.email) return toast.error("Food owner is not allowed to buy!");
-
-    const form = e.target;
-    const priceValue = parseFloat(form.price.value);
-    const email = user?.email;
-
-    // Check if purchase quantity is 0 or exceeds available quantity or 20
-    if (purchaseQuantity === 0 || purchaseQuantity > quantity || purchaseQuantity > 20) {
-      return toast.error("Invalid purchase quantity.");
+  
+    // Check if purchase quantity is 0
+    if (purchaseQuantity === 0) {
+      return toast.error("You can't buy food not available.");
     }
-
+  
+    // Check if user is the owner of the item
+    if (user?.email === buyer?.email) {
+      return toast.error("Food owner is not allowed to buy!");
+    }
+  
+    const form = e.target;
+    const priceValue = parseFloat(price); // Access the price directly from the purchase data
+    const email = user?.email;
+  
+    // Check if purchase quantity exceeds available quantity or 20
+    if (purchaseQuantity > quantity) {
+      return toast.error("You can't buy more than the available quantity.");
+    }
+  
+    if (purchaseQuantity > 20) {
+      return toast.error("You can't buy 20 more quantity.");
+    }
+  
     const purchaseData = {
       productId: _id,
       price: priceValue,
@@ -38,7 +50,7 @@ const Purchase = () => {
       buyingDate,
       foodImage
     };
-
+  
     try {
       // Send a POST request to the server to create a new purchase
       const { data } = await axios.post(
@@ -54,6 +66,7 @@ const Purchase = () => {
       toast.error("Failed to complete purchase. Please try again later.");
     }
   };
+  
 
   return (
     <div>
@@ -116,7 +129,7 @@ const Purchase = () => {
               <div className="flex justify-end mt-6">
                 <button
                   type="submit"
-                  disabled={purchaseQuantity === 0 || purchaseQuantity > quantity || purchaseQuantity > 20} // Disable the button if quantity is 0 or exceeds available quantity or 20
+                  onClick={handleSubmit}// Disable the button if quantity is 0 or exceeds available quantity or 20
                   className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
                 >
                   Purchase
