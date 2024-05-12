@@ -16,8 +16,6 @@ const ProductDetails = () => {
     const {ingredients, makingProcedure} = description || {}; 
 
 
-    
-
     return (
 
     <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:py-16 h-full lg:flex-row lg:items-center">
