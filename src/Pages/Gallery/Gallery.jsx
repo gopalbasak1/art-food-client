@@ -6,7 +6,7 @@ import GalleryCard from "./GalleryCard";
 import GalleryBanner from "./GalleryBanner";
 import Spinner from "../../components/Spinner/Spinner";
 import useAuth from "../../hooks/useAuth";
-import { Helmet } from "react-helmet";
+
 
 
 const Gallery = () => {
@@ -99,9 +99,7 @@ const Gallery = () => {
 
     return (
         <div className="container mx-auto my-10">
-            <Helmet>
-                <title>Art Food | Gallery</title>
-            </Helmet>
+           
             <GalleryBanner/>
             <div className="text-center">
                 {user ? (

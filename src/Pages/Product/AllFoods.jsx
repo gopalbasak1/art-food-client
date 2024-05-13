@@ -5,7 +5,7 @@ import AllFoodsCard from "./AllFoodsCard";
 import ProductBanner from "./ProductBanner";
 import Spinner from "../../components/Spinner/Spinner";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { Helmet } from "react-helmet";
+
 
 const AllFoods = () => {
     const [itemsPerPage, setItemsPerPage] = useState(9);
@@ -71,9 +71,7 @@ const AllFoods = () => {
 
     return (
         <div className="container px-6 py-10 mx-auto">
-            <Helmet>
-            <title>Art Food | All Foods</title>
-          </Helmet>
+
             <div className="text-center mb-6">
                 <ProductBanner/>
                 

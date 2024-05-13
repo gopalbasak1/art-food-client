@@ -5,7 +5,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Spinner from "../../components/Spinner/Spinner";
 import BestFood from "../../components/BestFood/BestFood";
 import Facility from "../../components/Facility/Facility";
-import { Helmet } from "react-helmet";
+
 
 
 const Home = () => {
@@ -17,9 +17,7 @@ const Home = () => {
 
     return (
         <div>
-          <Helmet>
-            <title>Art Food | Home</title>
-          </Helmet>
+
             <Banner/>
             <TopFood/>
             <Facility/>
