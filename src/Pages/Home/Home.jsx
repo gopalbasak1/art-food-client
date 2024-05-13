@@ -3,6 +3,7 @@ import Banner from "../../components/Banner/Banner";
 import TopFood from "../../components/TopFood/TopFood";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Spinner from "../../components/Spinner/Spinner";
+import BestFood from "../../components/BestFood/BestFood";
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
         <div>
             <Banner/>
             <TopFood/>
+            <BestFood/>
         </div>
     );
 };

@@ -56,7 +56,7 @@ const Purchase = () => {
       // Send a POST request to the server to create a new purchase
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/purchase`,
-        purchaseData
+        purchaseData,{withCredentials: true}
       );
       console.log(data);
       toast.success("Purchase Successful!");
