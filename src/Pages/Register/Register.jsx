@@ -22,43 +22,56 @@ const Register = () => {
       }
     },[navigate, user])
 
-  const handleSignUp = async e => {
-    e.preventDefault()
-    const form = e.target
-    const email = form.email.value
-    const name = form.name.value
-    const photo = form.photo.value
-    const pass = form.password.value
-    console.log({ email, pass, name, photo })
-    try {
-      //2. User Registration
-      const result = await createUser(email, pass)
-      await updateUserProfile(name, photo)
-      //Optimistic UI Update
-      setUser({ ...result?.user, photoURL: photo, displayName: name })
-      const {data} = await axiosSecure.post(`/jwt`, {
-        email: result?.user?.email,
-      },{
-        withCredentials: true
-      })
-      console.log(data);
-
-      const {info} = await axiosSecure.post(`/registers`, {
-        email: result?.user?.email,
-        name,
-        photo,
-        pass
-      })
-
-      console.log(info);
-
-      navigate(from, {replace: true})
-      toast.success('Sign up Successful')
-    } catch (err) {
-      console.log(err)
-      toast.error(err?.message)
+    const handleSignUp = async e => {
+      e.preventDefault()
+      const form = e.target
+      const email = form.email.value
+      const name = form.name.value
+      const photo = form.photo.value
+      const password = form.password.value
+      
+      // Password verification criteria
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+      
+      if (!passwordRegex.test(password)) {
+        toast.error('Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long.');
+        return;
+      }
+    
+      try {
+        // User Registration
+        const result = await createUser(email, password)
+        await updateUserProfile(name, photo)
+        
+        // Optimistic UI Update
+        setUser({ ...result?.user, photoURL: photo, displayName: name })
+        
+        // Request JWT token
+        const { data } = await axiosSecure.post(`/jwt`, {
+          email: result?.user?.email,
+        },{
+          withCredentials: true
+        })
+    
+        console.log(data);
+    
+        const { info } = await axiosSecure.post(`/registers`, {
+          email: result?.user?.email,
+          name,
+          photo,
+          password
+        })
+    
+        console.log(info);
+    
+        navigate(from, { replace: true })
+        toast.success('Sign up Successful')
+      } catch (err) {
+        console.log(err)
+        toast.error(err?.message)
+      }
     }
-  }
+    
 
   // Google Signin
   const handleGoogleSignIn = async () => {

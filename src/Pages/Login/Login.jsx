@@ -67,7 +67,14 @@ const Login = () => {
         toast.success('Sign in Successful')
       } catch (err) {
         console.log(err)
-        toast.error(err?.message)
+        // Check if the error message is due to incorrect credentials
+    if (err.response && err.response.status === 401) {
+      // Show an error message using toast or any other notification library
+      toast.error('Incorrect email or password. Please try again.');
+    } else {
+      // Show a generic error message
+      toast.error('An error occurred. Please try again later.');
+    }
       }
     }
   
