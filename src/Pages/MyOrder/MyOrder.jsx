@@ -1,33 +1,35 @@
-import { useContext, useEffect, useState } from "react"
-import { AuthContext } from "../../Provider/AuthProvider"
+import {  useEffect, useState } from "react"
 import axios from "axios";
 import toast from "react-hot-toast";
 import Spinner from "../../components/Spinner/Spinner";
+import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 
 
 const MyOrder = () => {
 
-  const {user, loading} = useContext(AuthContext);
+  const {user, loading} = useAuth();
 
   const [orders, setOrders] = useState([]);
+  const axiosSecure = useAxiosSecure()
 
   useEffect(() => {
     getData()
   }, [user])
 
   const getData = async () => {
-    const { data } = await axios(
-      `${import.meta.env.VITE_API_URL}/my-purchase/${user?.email}`,{withCredentials: true}
+    const { data } = await axiosSecure(
+      `/my-purchase/${user?.email}`
     )
     setOrders(data)
   }
 
   const handleDelete = async id => {
     try {
-      const { data } = await axios.delete(
-        `${import.meta.env.VITE_API_URL}/purchaseDelete/${id}`)
+      const { data } = await axiosSecure.delete(
+        `/purchaseDelete/${id}`)
       console.log(data)
       toast.success('Delete Successful')
 

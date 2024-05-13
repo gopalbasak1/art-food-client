@@ -1,9 +1,10 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import logo from '../../assets/logo.jpeg'
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import toast from 'react-hot-toast'
 import axios from 'axios'
-import { AuthContext } from '../../Provider/AuthProvider'
+import useAuth from '../../hooks/useAuth'
+import useAxiosSecure from '../../hooks/useAxiosSecure'
 
 
 const Register = () => {
@@ -12,7 +13,8 @@ const Register = () => {
   const location = useLocation();
   const from = location.state || '/';
   const { signInWithGoogle, createUser, updateUserProfile, user, setUser, loading } =
-    useContext(AuthContext);
+    useAuth();
+    const axiosSecure = useAxiosSecure()
 
     useEffect(()=>{
       if(user){
@@ -34,14 +36,14 @@ const Register = () => {
       await updateUserProfile(name, photo)
       //Optimistic UI Update
       setUser({ ...result?.user, photoURL: photo, displayName: name })
-      const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {
+      const {data} = await axiosSecure.post(`/jwt`, {
         email: result?.user?.email,
       },{
         withCredentials: true
       })
       console.log(data);
 
-      const {info} = await axios.post(`${import.meta.env.VITE_API_URL}/registers`, {
+      const {info} = await axiosSecure.post(`/registers`, {
         email: result?.user?.email,
         name,
         photo,
@@ -64,14 +66,14 @@ const Register = () => {
 
      const result = await signInWithGoogle();
      console.log(result.user);
-      const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {
+      const {data} = await axiosSecure.post(`/jwt`, {
         email: result?.user?.email,
       },{
         withCredentials: true
       })
       console.log(data);
 
-      const {info} = await axios.post(`${import.meta.env.VITE_API_URL}/registers`, {
+      const {info} = await axiosSecure.post(`/registers`, {
         result
       })
 

@@ -9,7 +9,8 @@ import { AuthContext } from "../../Provider/AuthProvider";
 const AllFoods = () => {
     const [products, setProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const {loading} = useContext(AuthContext)
+    const {loading} = useContext(AuthContext);
+    
 
     useEffect(() => {
         const fetchData = async () => {

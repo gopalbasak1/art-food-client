@@ -1,15 +1,15 @@
-import { useContext, useState, useRef, useEffect } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import GalleryCard from "./GalleryCard";
 import GalleryBanner from "./GalleryBanner";
 import Spinner from "../../components/Spinner/Spinner";
+import useAuth from "../../hooks/useAuth";
 
 
 const Gallery = () => {
-    const { user, loading } = useContext(AuthContext);
+    const { user, loading } = useAuth();
     const navigate = useNavigate();
     const [image, setImage] = useState("");
     const [review, setReview] = useState("");

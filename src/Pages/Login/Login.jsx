@@ -2,14 +2,16 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.jpeg'
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { useContext, useEffect } from 'react';
-import { AuthContext } from '../../Provider/AuthProvider';
+import { useEffect } from 'react';
+import useAuth from '../../hooks/useAuth';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const Login = () => {
 
     const navigate = useNavigate();
     const location = useLocation()
-    const { signIn, signInWithGoogle, user, loading } = useContext(AuthContext);
+    const { signIn, signInWithGoogle, user, loading } = useAuth();
+    const axiosSecure = useAxiosSecure()
   
     const from = location.state || '/';
   
@@ -24,13 +26,13 @@ const Login = () => {
       try {
         const result = await signInWithGoogle();
         console.log(result.user);
-        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {
+        const {data} = await axiosSecure.post(`/jwt`, {
           email: result?.user?.email,
         },{
           withCredentials: true
         })
         console.log(data);
-        const {info} = await axios.post(`${import.meta.env.VITE_API_URL}/registers`, {
+        const {info} = await axiosSecure.post(`/registers`, {
           result
         })
   
@@ -55,7 +57,7 @@ const Login = () => {
         //User Login
         const result = await signIn(email, pass)
         console.log(result.user);
-        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {
+        const {data} = await axiosSecure.post(`/jwt`, {
           email: result?.user?.email,
         },{
           withCredentials: true

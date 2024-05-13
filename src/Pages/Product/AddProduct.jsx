@@ -1,13 +1,15 @@
-import { useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { AuthContext } from '../../Provider/AuthProvider';
 import Spinner from '../../components/Spinner/Spinner';
+import useAuth from '../../hooks/useAuth';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const AddProduct = () => {
-  const { user, loading } = useContext(AuthContext);
+
+  const {user, loading} = useAuth();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,7 +42,7 @@ const AddProduct = () => {
     };
 
     try {
-      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/product`, productData);
+      const { data } = await axiosSecure.post(`/product`, productData);
       console.log(data);
       toast.success('Product Added Successfully!');
       navigate('/my-add-products'); // Redirect to home page after successful addition

@@ -1,11 +1,11 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AuthContext } from '../../../Provider/AuthProvider';
 import logo from '../../../assets/logo.jpeg'
+import useAuth from '../../../hooks/useAuth';
 
 const Navbar = () => {
     
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
 
   const [theme, setTheme] = useState('light');
 

@@ -1,14 +1,15 @@
-import { useContext } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
+import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+
 
 
 const UpdateProduct = () => {
 
     const navigate = useNavigate();
-
+    const axiosSecure = useAxiosSecure()
     const product = useLoaderData();
 
     const {
@@ -22,7 +23,7 @@ const UpdateProduct = () => {
         foodCategory,
       } = product || {};
 
-      const {user} = useContext(AuthContext);
+      const {user} = useAuth();
 
     const handleUpdate = async e =>{
         e.preventDefault();
@@ -55,8 +56,9 @@ const UpdateProduct = () => {
         }
 
         try {
-            const { data } = await axios.put(
-              `${import.meta.env.VITE_API_URL}/product/${_id}`,
+          
+            const { data } = await axiosSecure.put(
+              `/product/${_id}`,
               productData, {withCredentials: true}
             )
             console.log(data)

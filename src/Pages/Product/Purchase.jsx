@@ -1,15 +1,17 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
 import Spinner from "../../components/Spinner/Spinner";
+import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Purchase = () => {
   const purchase = useLoaderData();
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading } = useAuth();
   const { _id, foodImage, foodName, price, quantity, buyer } = purchase || {};
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure()
 
   // Use useState to store the current buying date
   const [buyingDate, setBuyingDate] = useState(Date.now());
@@ -54,9 +56,9 @@ const Purchase = () => {
   
     try {
       // Send a POST request to the server to create a new purchase
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/purchase`,
-        purchaseData,{withCredentials: true}
+      const { data } = await axiosSecure.post(
+        `/purchase`,
+        purchaseData,
       );
       console.log(data);
       toast.success("Purchase Successful!");
