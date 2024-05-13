@@ -1,11 +1,10 @@
 import { Link, useLoaderData } from 'react-router-dom';
-import logo from '../../assets/logo.jpeg'
 import { FaRegHandPointRight } from 'react-icons/fa';
 import { SiHomebridge } from 'react-icons/si';
 import { IoPersonOutline } from 'react-icons/io5';
 import { BiCategory } from 'react-icons/bi';
 import { MdNoFood } from 'react-icons/md';
-
+import { Helmet } from "react-helmet";
 
 const ProductDetails = () => {
 
@@ -19,6 +18,9 @@ const ProductDetails = () => {
     return (
 
     <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:py-16 h-full lg:flex-row lg:items-center">
+        <Helmet>
+            <title>Product Details | {foodName}</title>
+        </Helmet>
         <div className="w-full lg:w-1/2">
             <div className="lg:max-w-lg">
                 <h1 className="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl flex items-center gap-2"><MdNoFood />{foodName}</h1>

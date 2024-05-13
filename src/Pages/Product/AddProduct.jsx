@@ -3,6 +3,10 @@ import toast from 'react-hot-toast';
 import Spinner from '../../components/Spinner/Spinner';
 import useAuth from '../../hooks/useAuth';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { Helmet } from "react-helmet";
+
+
+
 
 const AddProduct = () => {
 
@@ -57,6 +61,9 @@ const AddProduct = () => {
 
   return (
     <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
+      <Helmet>
+        <title>Art Food | Add Product</title>
+      </Helmet>
       <section className=' p-2 md:p-6 mx-auto bg-white rounded-md shadow-md '>
         <h2 className='text-lg font-semibold text-gray-700 capitalize '>Post a Food Item</h2>
 

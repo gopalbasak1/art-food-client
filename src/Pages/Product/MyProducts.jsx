@@ -4,6 +4,10 @@ import toast from 'react-hot-toast'
 import Spinner from '../../components/Spinner/Spinner'
 import useAuth from '../../hooks/useAuth'
 import useAxiosSecure from '../../hooks/useAxiosSecure'
+import { Helmet } from "react-helmet";
+
+
+
 
 const MyProducts = () => {
   const { user, loading } = useAuth();
@@ -46,6 +50,9 @@ const MyProducts = () => {
 
   return (
     <section className='container px-4 mx-auto pt-12'>
+      <Helmet>
+        <title>Art Food | My Add Products</title>
+      </Helmet>
       <div className='flex items-center gap-x-3'>
         <h2 className='text-lg font-medium text-gray-800 '>My Posted Foods</h2>
 

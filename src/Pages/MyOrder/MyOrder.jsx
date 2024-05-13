@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import Spinner from "../../components/Spinner/Spinner";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-
+import { Helmet } from "react-helmet";
 
 
 
@@ -50,6 +50,9 @@ const MyOrder = () => {
 
     return (
       <section className='container px-4 mx-auto pt-12'>
+        <Helmet>
+          <title>Art Food | My Order</title>
+        </Helmet>
         <div className='flex items-center gap-x-3'>
           <h2 className='text-lg font-medium text-gray-800 '>My Order</h2>
   
