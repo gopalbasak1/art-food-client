@@ -1,7 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.jpeg'
 import toast from 'react-hot-toast';
-import axios from 'axios';
 import { useEffect } from 'react';
 import useAuth from '../../hooks/useAuth';
 import useAxiosSecure from '../../hooks/useAxiosSecure';

@@ -1,7 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import axios from "axios";
 import Spinner from "../../components/Spinner/Spinner";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
@@ -65,8 +65,7 @@ const Purchase = () => {
       // Optionally, you can redirect the user after successful purchase
       navigate('/my-order');
     } catch (error) {
-      console.error("Error:", error);
-      toast.error("Failed to complete purchase. Please try again later.");
+      toast.success(error.response.data);
     }
   };
 
