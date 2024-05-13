@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import AllFoodsCard from "./AllFoodsCard";
-import Banner from "../../components/Banner/Banner";
+
 import ProductBanner from "./ProductBanner";
+import Spinner from "../../components/Spinner/Spinner";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const AllFoods = () => {
     const [products, setProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const {loading} = useContext(AuthContext)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,6 +32,10 @@ const AllFoods = () => {
             console.error("Error searching products:", error);
         }
     };
+
+    if(loading){
+        return <Spinner/>
+    }
 
     return (
         <div className="container px-6 py-10 mx-auto">

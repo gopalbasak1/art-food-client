@@ -41,8 +41,17 @@ const Register = () => {
       })
       console.log(data);
 
+      const {info} = await axios.post(`${import.meta.env.VITE_API_URL}/registers`, {
+        email: result?.user?.email,
+        name,
+        photo,
+        pass
+      })
+
+      console.log(info);
+
       navigate(from, {replace: true})
-      toast.success('Signup Successful')
+      toast.success('Sign up Successful')
     } catch (err) {
       console.log(err)
       toast.error(err?.message)
@@ -61,6 +70,12 @@ const Register = () => {
         withCredentials: true
       })
       console.log(data);
+
+      const {info} = await axios.post(`${import.meta.env.VITE_API_URL}/registers`, {
+        result
+      })
+
+      console.log(info);
 
       toast.success('Sign In Successful')
       navigate(from, {replace: true})

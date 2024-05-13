@@ -57,7 +57,7 @@ const UpdateProduct = () => {
         try {
             const { data } = await axios.put(
               `${import.meta.env.VITE_API_URL}/product/${_id}`,
-              productData
+              productData, {withCredentials: true}
             )
             console.log(data)
             toast.success('Job Data Updated Successfully!')

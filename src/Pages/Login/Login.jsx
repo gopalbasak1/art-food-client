@@ -30,6 +30,12 @@ const Login = () => {
           withCredentials: true
         })
         console.log(data);
+        const {info} = await axios.post(`${import.meta.env.VITE_API_URL}/registers`, {
+          result
+        })
+  
+        console.log(info);
+  
         toast.success('Sign  in Successful')
         navigate(from, {replace: true})
       } catch (err) {
@@ -38,7 +44,7 @@ const Login = () => {
       }
     }
   
-    // Email Password Signin
+    // Email Password Sign in
     const handleSignIn = async e => {
       e.preventDefault()
       const form = e.target
@@ -56,7 +62,7 @@ const Login = () => {
         })
         console.log(data);
         navigate(from, {replace: true})
-        toast.success('Signin Successful')
+        toast.success('Sign in Successful')
       } catch (err) {
         console.log(err)
         toast.error(err?.message)
