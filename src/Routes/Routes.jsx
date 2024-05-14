@@ -14,6 +14,7 @@ import AllFoods from '../Pages/Product/AllFoods';
 import Gallery from '../Pages/Gallery/Gallery';
 import PrivateRoute from './PrivateRoute';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
+import CategoriesCard from '../components/Category/CategoriesCard';
 
 const Routes = createBrowserRouter([
     {
@@ -32,6 +33,10 @@ const Routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register/>
+            },
+            {
+                path: '/categories/:name',
+                element: <CategoriesCard/>
             },
             {
                 path: '/product/:id',

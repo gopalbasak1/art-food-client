@@ -61,7 +61,7 @@ const UpdateProduct = () => {
               productData, {withCredentials: true}
             )
             console.log(data)
-            toast.success('Job Data Updated Successfully!')
+            toast.success('Food Data Updated Successfully!')
             navigate('/my-add-products')
           } catch (err) {
             console.log(err)
@@ -95,14 +95,36 @@ const UpdateProduct = () => {
                  placeholder='photo url' type='text' name='foodImage' className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring' />
               </div>
   
+
               <div>
-                <label className='text-gray-700 ' htmlFor='foodCategory'>
-                  Food Category
-                </label>
-                <input id='foodCategory'
+              <label className='text-gray-700 ' htmlFor='foodCategory'>
+                Food Category
+              </label>
+              <select
+                name='foodCategory' 
+                id='foodCategory'
                 defaultValue={foodCategory}
-                placeholder='food category' type='text' name='foodCategory' className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring' />
-              </div>
+                className='border p-2 rounded-md'
+              >
+                <option value='Pasta'>Pasta</option>
+                <option value='Sushi'>Sushi</option>
+                <option value='Dessert'>Dessert</option>
+                <option value='Salad'>Salad</option>
+                <option value='Chicken'>Chicken</option>
+                <option value='Pizza'>Pizza</option>
+                <option value='Soup'>Soup</option>
+                <option value='Bread'>Bread</option>
+                <option value='Curry'>Curry</option>
+                <option value='Meat'>Meat</option>
+                <option value='Noodle'>Noodle</option>
+                <option value='Beverage'>Beverage</option>
+                <option value='Burger'>Burger</option>
+                <option value='Fish'>Fish</option>
+                <option value='Biryani'>Biryani</option>
+                <option value='Others'>Others</option>
+              </select>
+            
+            </div>
   
               <div>
                 <label className='text-gray-700 ' htmlFor='price'>
@@ -132,6 +154,8 @@ const UpdateProduct = () => {
                 placeholder='quantity'
                 type='number' name='quantity' className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring' />
               </div>
+
+              
   
   
             </div>

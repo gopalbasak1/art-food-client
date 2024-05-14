@@ -5,6 +5,9 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Spinner from "../../components/Spinner/Spinner";
 import BestFood from "../../components/BestFood/BestFood";
 import Facility from "../../components/Facility/Facility";
+import Sponsor from "../../components/Sponsor/Sponsor";
+import Categories from "../../components/Category/Categories";
+
 
 
 
@@ -21,7 +24,9 @@ const Home = () => {
             <Banner/>
             <TopFood/>
             <Facility/>
+            <Categories/>
             <BestFood/>
+            <Sponsor/>
         </div>
     );
 };
