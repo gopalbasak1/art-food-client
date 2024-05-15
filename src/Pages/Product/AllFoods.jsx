@@ -56,9 +56,11 @@ const AllFoods = () => {
         try {
             const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/search?foodName=${searchTerm}`);
             setProducts(data);
+            setSearchTerm('')
         } catch (error) {
             console.error("Error searching products:", error);
         }
+        
     };
 
     if(loading){
