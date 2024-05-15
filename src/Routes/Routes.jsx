@@ -54,7 +54,9 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/add-product',
-                element: <AddProduct/>
+                element: <PrivateRoute>
+                    <AddProduct/>
+                </PrivateRoute>
             },
             {
                 path: '/my-add-products',
@@ -64,7 +66,9 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/update/:id',
-                element: <UpdateProduct/>,
+                element: <PrivateRoute>
+                    <UpdateProduct/>
+                </PrivateRoute>,
                 loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/product/${params.id}`)
             },
             {

@@ -1,5 +1,4 @@
 import {  useEffect, useState } from "react"
-import axios from "axios";
 import toast from "react-hot-toast";
 import Spinner from "../../components/Spinner/Spinner";
 import useAuth from "../../hooks/useAuth";
