@@ -4,7 +4,7 @@ import logo from '../../../assets/logo.jpeg'
 import useAuth from '../../../hooks/useAuth';
 
 const Navbar = () => {
-    
+  
   const { user, logOut } = useAuth();
 
   const [theme, setTheme] = useState('light');
@@ -99,6 +99,9 @@ const Navbar = () => {
               </li>
               <li>
                 <Link to='/my-order'>My Order</Link>
+              </li>
+              <li>
+                <Link to='/my-profile'>My Profile</Link>
               </li>
               <li className='mt-2'>
                 <button

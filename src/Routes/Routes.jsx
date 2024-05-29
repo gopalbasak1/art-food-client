@@ -15,6 +15,7 @@ import Gallery from '../Pages/Gallery/Gallery';
 import PrivateRoute from './PrivateRoute';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 import CategoriesCard from '../components/Category/CategoriesCard';
+import MyProfile from '../Pages/MyProfile/MyProfile';
 
 const Routes = createBrowserRouter([
     {
@@ -84,6 +85,12 @@ const Routes = createBrowserRouter([
             {
                 path: '/gallery',
                 element: <Gallery/>
+            },
+            {
+                path: '/my-profile',
+                element: <PrivateRoute>
+                    <MyProfile/>
+                </PrivateRoute>
             }
         ])
     }
