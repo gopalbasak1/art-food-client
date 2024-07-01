@@ -49,5 +49,14 @@ Welcome to the Art Food Restaurant Website! This website provides a platform for
 - React-simple-typewriter
 - react-hot-toast
 
+## Installation Steps:
+
+- Clone the repository.
+- Run npm install to install dependencies.
+- Configure Firebase and MongoDB credentials in .env file.
+- Run npm start to start the development server.
+- Access the website at http://localhost:5000.
+
+
 ## Enjoy your FoodArt Experience!
 We hope you enjoy exploring our collection of Art Food. Happy crafting!
